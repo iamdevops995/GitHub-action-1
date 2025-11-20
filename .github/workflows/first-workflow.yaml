@@ -1,0 +1,14 @@
+name: First workflow
+on: push
+
+jobs:
+    first-job:
+        runs-on: unbuntu:latest
+        steps:
+            - name: Welcome to demo job
+              run: echo "Welcome to github action certification"
+            - name: List the files on the repo
+              run: ls
+            - name: Read the file from directory
+              run: cat README.md
+
