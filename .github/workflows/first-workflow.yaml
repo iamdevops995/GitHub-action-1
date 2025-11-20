@@ -5,6 +5,8 @@ jobs:
     first-job:
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout the code repo
+              uses: actions/checkout@v5
             - name: Welcome to demo job
               run: echo "Welcome to github action certification"
             - name: List the files on the repo
