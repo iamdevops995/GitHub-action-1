@@ -3,7 +3,7 @@ on: push
 
 jobs:
     first-job:
-        runs-on: unbuntu:latest
+        runs-on: ubuntu-latest
         steps:
             - name: Welcome to demo job
               run: echo "Welcome to github action certification"
