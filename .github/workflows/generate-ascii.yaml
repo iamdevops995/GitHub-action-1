@@ -9,18 +9,29 @@ jobs:
           run: sudo apt install cowsay -y
         - name: Execute cowsay cmd
           run: cowsay -f dragon "Welcome to the dragon" >> dragon.txt
-        - name: Sleep for 30s
-          run: sleep 30
+        - name: Upload the dragon txt file
+          uses: actions/upload-artifact@v4
+          with:
+            name: dragonfile
+            path: dragon.txt
     test_job_1:
         runs-on: ubuntu-latest
         steps:
+        - name: Download dragon txt file
+          uses: actions/download-artifact@v5
+          with:
+            name: dragonfile
+        - name: list the file
+          run: ls -lrth
         - name: Test the file exists
           run: grep -i "dragon" dragon.txt
-        - name: sleep for 30s
-          run: sleep 30
     deploy_job_1:
         runs-on: ubuntu-latest
         steps:
+        - name: Download dragon txt file
+          uses: actions/download-artifact@v5
+          with:
+            name: dragonfile        
         - name: View the dragon.txt file
           run: cat dragon.txt
         - name: List file in the repo
