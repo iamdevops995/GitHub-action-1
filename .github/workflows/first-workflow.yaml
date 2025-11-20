@@ -5,12 +5,15 @@ jobs:
     first-job:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout the code repo
-              uses: actions/checkout@v5
             - name: Welcome to demo job
               run: echo "Welcome to github action certification"
-            - name: List the files on the repo
-              run: ls
-            - name: Read the file from directory
-              run: cat README.md
+            - name: Checkout the code repo
+              uses: actions/checkout@v5
+            - name: Read and list the file from repo
+              run:  | 
+                ls -lrta
+                cat README.md
+            - name: Generate ASCII Art work
+              run: cowsay -f dragon "Welcome to the dragon" >> dragon.txt
+            
 
