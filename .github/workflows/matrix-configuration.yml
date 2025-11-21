@@ -4,15 +4,20 @@ on: [push,workflow_dispatch]
 jobs:
     deploy:
         strategy:
+            fail-fast: false
+            max-parallel: 2
             matrix:
                 os: [ubuntu-latest,ubuntu-20.04,windows-latest]
-                image: [hello-world,alpine]
+                images: [hello-world,alpine]
+                exclude:
+                  - images: alpine
+                    os: windows-latest
         runs-on: ${{ matrix.os }}
         steps:
             - name: Echo the docker info
               run: docker info
-            - name: RUN on image is ${{ matrix.image }}
-              run: docker run ${{ matrix.image }}
+            - name: RUN on image is ${{ matrix.images }}
+              run: docker run ${{ matrix.images }}
 
     # docker_build_linux:
     #     runs-on: ubuntu-latest
