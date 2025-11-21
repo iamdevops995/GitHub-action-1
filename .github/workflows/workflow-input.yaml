@@ -1,0 +1,38 @@
+name: Workflow input testing
+on:
+    workflow_dispatch: 
+        inputs:
+            runs_test:
+                description: "Run Test?"
+                type: boolean
+                required: true
+            test_type:
+                description: "Select the test type want perform"
+                type: choice
+                options:
+                    - unit
+                    - integration
+                    - all
+                required: true
+            environment:
+                description: "Select the environment"
+                type: string
+                required: true
+            change_record:
+                description: "Enter the change record number"
+                type: string
+                required: true
+jobs:
+    test_job:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: print the workflow inputs
+              run: |
+                echo "Run test: ${{ inputs.runs_test }}"
+                echo "Testing Type: ${{ inputs.test_type }}"
+                echo "Environment: ${{ inputs.environment }}"
+                echo "Change Record Number: ${{ inputs.change_record }}"
+            - name: Run test if selected
+              if: ${{ inputs.runs_test }}
+              run: echo selected Testing is completed
