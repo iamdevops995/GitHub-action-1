@@ -2,17 +2,29 @@ name: Matrix configuration
 
 on: [push,workflow_dispatch]
 jobs:
-    docker_build_linux:
-        runs-on: ubuntu-latest
+    deploy:
+        strategy:
+            matrix:
+                os: [ubuntu-latest,ubuntu-20.04,windows-latest]
+                image: [hello-world,alpine]
+        runs-on: ${{ matrix.os }}
         steps:
-            - name: Docker info
+            - name: Echo the docker info
               run: docker info
-            - name: Run docker helloworld container
-              run: docker run hello-world
-    docker_build_windows:
-        runs-on: windows-latest
-        steps:
-            - name: Docker info
-              run: docker info
-            - name: Run docker helloworld container
-              run: docker run hello-world
+            - name: RUN on image is ${{ matrix.image }}
+              run: docker run ${{ matrix.image }}
+
+    # docker_build_linux:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: Docker info
+    #           run: docker info
+    #         - name: Run docker helloworld container
+    #           run: docker run hello-world
+    # docker_build_windows:
+    #     runs-on: windows-latest
+    #     steps:
+    #         - name: Docker info
+    #           run: docker info
+    #         - name: Run docker helloworld container
+    #           run: docker run hello-world
