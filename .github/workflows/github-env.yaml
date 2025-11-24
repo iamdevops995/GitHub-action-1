@@ -15,7 +15,7 @@ jobs:
           echo "::group::My group messages"
           echo "Welcome to iamdevops repository"
           echo "Find the new codes and scripts"
-          echo "::endgroup"
+          echo "::endgroup::"
 
       - name: Retrive the env
         run: |
