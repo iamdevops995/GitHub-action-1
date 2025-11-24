@@ -1,0 +1,15 @@
+on: 
+  pull_request: 
+    types: opened
+
+jobs:
+  custom_docker_job:
+    runs-on: ubuntu-latest
+    permissions: 
+      issues: write
+      pull-requests: write
+    steps:
+      - name: iamdevops995-docker-action
+        uses: iamdevops995/docker-action-pr-comment@v1.0.0-alpha
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

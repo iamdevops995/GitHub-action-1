@@ -17,7 +17,7 @@ on:
         required: true
       environment:
         description: Select the environment
-        type: string
+        type: environment
         required: true
       change_record:
         description: Enter the change record number
