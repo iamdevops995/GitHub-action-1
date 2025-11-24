@@ -1,0 +1,15 @@
+name: Github env workflow
+on: 
+  workflow_dispatch: 
+jobs:
+  demo_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Store the variable as GITHUB_ENV
+        run: |
+          echo "DOCKER_USERNMAE=iamdevops993" >> $GITHUB_ENV
+          echo "PROD_DEPLOY=true" >> $GITHUB_ENV
+      - name: Retrive the env
+        run: |
+          echo $DOCKER_USERNMAE
+          echo $PROD_DEPLOY
