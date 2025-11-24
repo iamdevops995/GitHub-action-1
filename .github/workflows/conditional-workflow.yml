@@ -1,6 +1,8 @@
 name: Conditional workflow 
 on:
-    push
+    push:
+    pull_request: 
+        branches: [main]
 jobs:
     prodution_deploy:
         if:  github.ref == 'refs/heads/main'
