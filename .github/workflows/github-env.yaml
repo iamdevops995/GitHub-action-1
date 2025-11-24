@@ -10,6 +10,13 @@ jobs:
         run: |
           echo "DOCKER_USERNMAE=iamdevops993" >> $GITHUB_ENV
           echo "PROD_DEPLOY=true" >> $GITHUB_ENV
+      - name: Group the message
+        run:  |
+          echo "::group::My group messages"
+          echo "Welcome to iamdevops repository"
+          echo "Find the new codes and scripts"
+          echo "::endgroup"
+
       - name: Retrive the env
         run: |
           echo $DOCKER_USERNMAE
