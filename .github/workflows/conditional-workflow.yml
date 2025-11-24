@@ -12,6 +12,7 @@ jobs:
               run: echo "Production deploy"
     development_deploy:
         runs-on: ubuntu-latest
+        if:  github.ref == 'refs/heads/feature-1'
         steps:
             - name: Development
               run: echo "Development deploy"
