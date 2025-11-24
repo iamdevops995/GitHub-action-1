@@ -10,4 +10,4 @@ jobs:
             - name: checkout repo
               uses: actions/checkout@v6
             - name: Run the script
-              run: echo "Welcome to the github action $GITHUB_EVENT_TYPE"
+              run: echo "Welcome to the github action ${{ github.event_name }}"
