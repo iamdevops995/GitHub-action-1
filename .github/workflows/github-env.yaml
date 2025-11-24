@@ -16,6 +16,20 @@ jobs:
           echo "Welcome to iamdevops repository"
           echo "Find the new codes and scripts"
           echo "::endgroup::"
+      - name: Create annotation for build error
+        env:
+          MY_NAME: "iamdevops995"
+        run: |
+          echo "::error file=app.js,line=1::Missing semicolon"
+          echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+          echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+          echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+          echo "before mask: ${{env.MY_NAME}}"
+          echo "::add-mask::$MY_NAME"
+          echo "After mask: ${{env.MY_NAME}}"
+          the_secret=$((RANDOM))
+          echo "Secrets:  $the_secret"
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
 
       - name: Retrive the env
         run: |
