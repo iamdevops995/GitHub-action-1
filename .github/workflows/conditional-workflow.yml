@@ -1,0 +1,17 @@
+name: Conditional workflow 
+on:
+    push:
+    pull_request: 
+        branches: [main]
+jobs:
+    prodution_deploy:
+        if:  github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        steps:
+            - name: production
+              run: echo "Production deploy"
+    development_deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Development
+              run: echo "Development deploy"
