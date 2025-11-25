@@ -1,0 +1,21 @@
+name: Defaults run workflow
+
+on: push
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./scripts
+jobs:
+  default-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: welcome to script directory
+        run: |
+          echo "###################################################"
+          pwd
+          ls -lrt
+          cat scripts
+          chmod +X scripts
+          ./scripts
+          echo "###################################################"
