@@ -23,4 +23,11 @@ jobs:
       - name: Hello from job2
         run: |
           echo "Welcome from job2"
-
+  job-3:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [job-1, job-2]
+    steps:
+      - name:  hello from job-3
+        run: |
+          echo "Hello from job-3"
