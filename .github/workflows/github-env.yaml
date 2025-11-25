@@ -1,0 +1,37 @@
+name: Github env workflow
+on: 
+  workflow_dispatch:
+  push:
+jobs:
+  demo_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Store the variable as GITHUB_ENV
+        run: |
+          echo "DOCKER_USERNMAE=iamdevops993" >> $GITHUB_ENV
+          echo "PROD_DEPLOY=true" >> $GITHUB_ENV
+      - name: Group the message
+        run:  |
+          echo "::group::My group messages"
+          echo "Welcome to iamdevops repository"
+          echo "Find the new codes and scripts"
+          echo "::endgroup::"
+      - name: Create annotation for build error
+        env:
+          MY_NAME: "iamdevops995"
+        run: |
+          echo "::error file=app.js,line=1::Missing semicolon"
+          echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+          echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+          echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
+          echo "before mask: ${{env.MY_NAME}}"
+          echo "::add-mask::$MY_NAME"
+          echo "After mask: ${{env.MY_NAME}}"
+          the_secret=$((RANDOM))
+          echo "Secrets:  $the_secret"
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+
+      - name: Retrive the env
+        run: |
+          echo $DOCKER_USERNMAE
+          echo $PROD_DEPLOY
