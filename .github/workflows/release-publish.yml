@@ -1,0 +1,12 @@
+name: release-publish
+
+on:
+  release:
+    types: [created]
+jobs:
+  publish-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the latest published tag
+        run: |
+          echo "Latest release tag is  -->  $GITHUB_REF"

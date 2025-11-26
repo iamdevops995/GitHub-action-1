@@ -1,0 +1,16 @@
+name: PR Analysis
+
+on:
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Running analysis for latest commit..."

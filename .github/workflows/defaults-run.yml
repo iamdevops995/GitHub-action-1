@@ -1,0 +1,23 @@
+name: Defaults run workflow
+
+on: push
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./script
+jobs:
+  default-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: welcome to script directory
+        run: |
+          echo "###################################################"
+          echo "Current directory: $(pwd)"
+          echo "Shell in use: $SHELL"
+          ls -lrt
+          chmod +x welcome.sh
+          ./welcome.sh
+          echo "###################################################"
