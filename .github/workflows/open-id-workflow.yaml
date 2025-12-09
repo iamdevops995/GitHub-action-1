@@ -1,0 +1,20 @@
+name: OpenID connect workflow
+permissions: 
+  id-token: write
+  contents: read
+on:
+  push:
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: configure aws OIDC
+        uses: aws-actions/configure-aws-credentials@v5.1.1
+        with:
+          role-to-assume: arn:aws:iam::012584563464:role/openIDRole
+          aws-region: us-east-1
+      - name: check the data
+        run: |
+          touch file.txt
+          echo "Welcome to OIDC File"
+          aws s3 cp file.txt s3://mybucket-open-id/
