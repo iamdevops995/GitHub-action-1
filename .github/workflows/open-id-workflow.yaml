@@ -13,8 +13,12 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::012584563464:role/openIDRole
           aws-region: us-east-1
-      - name: check the data
+      - name: List the bucket in AWS
         run: |
           echo "Welcome to OIDC connect to aws"
-          echo "listing from the s3 bucket"
+          echo "listing the s3 bucket"
           aws s3 ls
+      - name: list the file in the s3 bucket
+        run: | 
+          echo "List the file in the specific bucket"
+          aws s3 ls s3://mybucket-open-id
