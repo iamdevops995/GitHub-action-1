@@ -17,4 +17,4 @@ jobs:
         run: |
           touch file.txt
           echo "Welcome to OIDC File"
-          aws s3 cp file.txt s3://mybucket-open-id/
+          aws s3 ls
