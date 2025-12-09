@@ -15,6 +15,6 @@ jobs:
           aws-region: us-east-1
       - name: check the data
         run: |
-          touch file.txt
-          echo "Welcome to OIDC File"
+          echo "Welcome to OIDC connect to aws"
+          echo "listing from the s3 bucket"
           aws s3 ls
