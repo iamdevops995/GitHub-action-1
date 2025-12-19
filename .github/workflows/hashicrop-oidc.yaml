@@ -24,8 +24,8 @@ jobs:
           method: jwt
           role: github-actions
           secrets: |
-            kv/data/db username username | DB_USER ;
-            kv/data/db password password | DB_PASS
+            kv/data/db username | DB_USER ;
+            kv/data/db password | DB_PASS
 
       - name: Use secrets
         run: |
