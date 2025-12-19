@@ -22,6 +22,7 @@ jobs:
         with:
           url: https://8200-port-acq663rglmdniflx.labs.kodekloud.com
           method: jwt
+          jwtGithubAudience: sts.amazonaws.com
           role: github-actions
           secrets: |
             kv/data/db username | DB_USER ;
