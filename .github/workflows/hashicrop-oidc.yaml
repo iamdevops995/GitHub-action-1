@@ -20,12 +20,12 @@ jobs:
       - name: Authenticate to Vault
         uses: hashicorp/vault-action@v3
         with:
-          url: https://vault.example.com
+          url: https://8200-port-acq663rglmdniflx.labs.kodekloud.com
           method: jwt
           role: github-actions
           secrets: |
-            secret/data/github/db username | DB_USER ;
-            secret/data/github/db password | DB_PASS
+            kv/data/db username | DB_USER ;
+            kv/data/db password | DB_PASS
 
       - name: Use secrets
         run: |
