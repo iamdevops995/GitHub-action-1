@@ -1,0 +1,32 @@
+name: Vault Integration
+
+on:
+  workflow_dispatch: 
+  push:
+    branches: [ main ]
+
+permissions:
+  id-token: write   # REQUIRED for OIDC
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Vault
+        uses: hashicorp/vault-action@v3
+        with:
+          url: https://vault.example.com
+          method: jwt
+          role: github-actions
+          secrets: |
+            secret/data/github/db username | DB_USER ;
+            secret/data/github/db password | DB_PASS
+
+      - name: Use secrets
+        run: |
+          echo "DB_USER=$DB_USER"
