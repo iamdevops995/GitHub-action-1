@@ -1,0 +1,14 @@
+name: Github actions permission
+on:
+  workflow_dispatch:
+jobs:
+  read-only-pr:
+    name: read only pr job
+    runs-on: ubuntu-24-04
+    permissions:
+      pull-requests: read
+    continue-on-error: true
+    steps:
+      - name: checkout
+        uses: action/checkout@v4
+        
