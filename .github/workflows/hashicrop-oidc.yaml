@@ -22,13 +22,13 @@ jobs:
         with:
           url: https://8200-port-l6nxqi3mc3fzz2mq.labs.kodekloud.com/
           method: jwt
-          jwtGithubAudience: sts.amazonaws.com
-          role: github-actions
+          role: github
           secrets: |
-            kv/data/data DB_USER | DB_USER ;
-            kv/data/data DB_PASS | DB_PASS
+            kv/data/github/db username | DB_USER ;
+            kv/data/github/db password | DB_PASS
 
       - name: Use secrets
         run: |
           echo "DB_USER=$DB_USER"
+
 
