@@ -31,6 +31,15 @@ jobs:
       - name: Use secrets
         run: |
           echo "DB_USER=$DB_USER"
+      - name: Verify secrets
+        run: |
+          if [ -z "$DB_USER" ]; then
+            echo "DB_USER is NOT set"
+            exit 1
+          else
+            echo "DB_USER is set correctly"
+          fi
+
 
 
 
